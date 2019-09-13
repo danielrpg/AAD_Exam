@@ -20,20 +20,13 @@ public class UiTesting {
 
     // Create IntentTestRule for the MainActivity
     @Rule
-    public IntentsTestRule<MainActivity> mMainActivityTestRule
-            = new IntentsTestRule<>
-            (MainActivity.class);
+    public IntentsTestRule<MainActivity> mMainActivityTestRule;
 
     // Create Instrumentation Test method
     @Test
     public void intentAddTask() {
 
-        // Click the FloatingActionButton in the Activity
-        onView(withId(R.id.fab)).perform(click());
 
-        // Verify that the Intent was sent under test to the
-        // AddTaskActivity
-        intended(hasComponent(AddTaskActivity.class.getName()));
     }
 
 }

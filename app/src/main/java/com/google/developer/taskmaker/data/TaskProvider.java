@@ -65,62 +65,47 @@ public class TaskProvider extends ContentProvider {
         // Get a reference to the readable SQLiteDatabase
         SQLiteDatabase db = mDbHelper.getReadableDatabase();
 
-        // Match the URI passed in
+        //TODO Match the URI passed in
         switch (sUriMatcher.match(uri)) {
 
-            // If the URI does not contain an ID of a single Task...
+            //TODO If the URI does not contain an ID of a single Task...
             case TASKS:
 
-                // Return a cursor that queries the database for all Tasks
-                returnCursor = db.query(
-                        DatabaseContract.TABLE_TASKS,
-                        projection,
-                        selection,
-                        selectionArgs,
-                        null,
-                        null,
-                        sortOrder
+                //TODO Return a cursor that queries the database for all Tasks
+
                 );
 
-                // Break from the switch statement
+                //TODO Break from the switch statement
                 break;
 
-            // If the URI does contain an ID of a single Task...
+            //TODO If the URI does contain an ID of a single Task...
             case TASKS_WITH_ID:
 
-                // Return a cursor that queries the database for the one Task,
+                //TODO Return a cursor that queries the database for the one Task,
                 // specifying its Id in the selection parameter
-                returnCursor = db.query(
-                        DatabaseContract.TABLE_TASKS,
-                        projection,
-                        DatabaseContract.TaskColumns._ID + " = ?",
-                        new String[]{uri.getLastPathSegment()},
-                        null,
-                        null,
-                        sortOrder
+
                 );
 
-                // Break from the switch statement
+                //TODO Break from the switch statement
                 break;
 
-            // In the default case...
+            //TODO In the default case...
             default:
 
-                // Throw a UnsupportedOperationException
+                //TODO Throw a UnsupportedOperationException
                 throw new UnsupportedOperationException("Unknown URI:" + uri);
         }
 
-        // Get the Context
+        //TODO Get the Context
         Context context = getContext();
 
-        // If the context is not null...
+        //TODO If the context is not null...
         if (context != null) {
 
-            // Register to watch this Content URI for changes
-            returnCursor.setNotificationUri(context.getContentResolver(), uri);
+            //TODO Register to watch this Content URI for changes
         }
 
-        // Return the cursor
+        //TODO Return the cursor
         return returnCursor;
     }
 
@@ -130,19 +115,19 @@ public class TaskProvider extends ContentProvider {
         //TODO: Implement new task insert
         //TODO: Expected Uri: content://com.google.developer.taskmaker/tasks
 
-        // Get a reference to the writable SQLiteDatabase
+        //TODO Get a reference to the writable SQLiteDatabase
         SQLiteDatabase db = mDbHelper.getWritableDatabase();
 
-        // Declare the return Uri
+        //TODO Declare the return Uri
         Uri returnUri;
 
-        // Match the URI passed in
+        //TODO Match the URI passed in
         switch (sUriMatcher.match(uri)) {
 
-            // If the URI does not contain an ID of a single Task...
+            //TODO If the URI does not contain an ID of a single Task...
             case TASKS:
 
-                // Insert the passed values into the Task table in the database
+                //TODO Insert the passed values into the Task table in the database
                 db.insert(
                         DatabaseContract.TABLE_TASKS,
                         null,
@@ -162,17 +147,17 @@ public class TaskProvider extends ContentProvider {
                 throw new UnsupportedOperationException("Unknown URI:" + uri);
         }
 
-        // Get the Context
+        //TODO Get the Context
         Context context = getContext();
 
-        // If the context is not null...
+        //TODO If the context is not null...
         if (context != null) {
 
-            // Register to watch this Content URI for changes
+            //TODO Register to watch this Content URI for changes
             context.getContentResolver().notifyChange(uri, null);
         }
 
-        // Return the Uri
+        //TODO Return the Uri
         return returnUri;
     }
 
@@ -182,17 +167,14 @@ public class TaskProvider extends ContentProvider {
         //TODO: Expected Uri: content://com.google.developer.taskmaker/tasks/{id}
         switch (sUriMatcher.match(uri)) {
 
-            // If the URI does contain an ID of a single Task...
+            //TODO If the URI does contain an ID of a single Task...
             case TASKS_WITH_ID:
 
-                // Get the id of said Task
-                long id = ContentUris.parseId(uri);
+                //TODO Get the id of said Task
 
-                // Create a selection filter using the _ID column of the Task column
-                selection = String.format("%s = ?", DatabaseContract.TaskColumns._ID);
+                //TODO Create a selection filter using the _ID column of the Task column
 
-                // Create a selection argument using the id of the Task
-                selectionArgs = new String[]{String.valueOf(id)};
+                //TODO Create a selection argument using the id of the Task
 
                 // Break from the switch statement
                 break;
@@ -207,7 +189,7 @@ public class TaskProvider extends ContentProvider {
         // Get a reference to the writable SQLiteDatabase
         SQLiteDatabase db = mDbHelper.getWritableDatabase();
 
-        // Update the Task in the database with the passed values and filters,
+        //TODO Update the Task in the database with the passed values and filters,
         // returning the number of rows updated, if any.
         int count = db.update(DatabaseContract.TABLE_TASKS, values, selection, selectionArgs);
 
@@ -225,29 +207,26 @@ public class TaskProvider extends ContentProvider {
     @Override
     public int delete(Uri uri, String selection, String[] selectionArgs) {
 
-        // Match the URI passed in
+        //TODO Match the URI passed in
         switch (sUriMatcher.match(uri)) {
 
-            // If the URI does not contain an ID of a single Task...
+            //TODO If the URI does not contain an ID of a single Task...
             case TASKS:
 
-                // Rows aren't counted with null selection
-                selection = (selection == null) ? "1" : selection;
+                //TODO Rows aren't counted with null selection
 
                 // Break from the switch statement
                 break;
 
-            // If the URI does contain an ID of a single Task...
+            //TODO If the URI does contain an ID of a single Task...
             case TASKS_WITH_ID:
 
-                // Get the id of said Task
-                long id = ContentUris.parseId(uri);
+                //TODO Get the id of said Task
 
                 // Create a selection filter using the _ID column of the Task column
                 selection = String.format("%s = ?", DatabaseContract.TaskColumns._ID);
 
-                // Create a selection argument using the id of the Task
-                selectionArgs = new String[]{String.valueOf(id)};
+                //TODO Create a selection argument using the id of the Task
 
                 // Break from the switch statement
                 break;
@@ -262,11 +241,10 @@ public class TaskProvider extends ContentProvider {
         // Get a reference to the writable SQLiteDatabase
         SQLiteDatabase db = mDbHelper.getWritableDatabase();
 
-        // Delete the Task in the database using the passed filters,
+        //TODO Delete the Task in the database using the passed filters,
         // returning the number of rows deleted, if any.
-        int count = db.delete(DatabaseContract.TABLE_TASKS, selection, selectionArgs);
 
-        // If there were row(s) deleted...
+        //TODO If there were row(s) deleted...
         if (count > 0) {
 
             // Notify observers of the change
@@ -283,15 +261,9 @@ public class TaskProvider extends ContentProvider {
         JobScheduler jobScheduler = (JobScheduler) getContext()
                 .getSystemService(Context.JOB_SCHEDULER_SERVICE);
 
-        //Run the job approximately every hour
+        //TODO Run the job approximately every hour
         // Set the jobInterval variable to be 1 hour
         long jobInterval = 3600000L;
-
-        ComponentName jobService = new ComponentName(getContext(), CleanupJobService.class);
-        JobInfo task = new JobInfo.Builder(CLEANUP_JOB_ID, jobService)
-                .setPeriodic(jobInterval)
-                .setPersisted(true)
-                .build();
 
         if (jobScheduler.schedule(task) != JobScheduler.RESULT_SUCCESS) {
             Log.w(TAG, "Unable to schedule cleanup job");

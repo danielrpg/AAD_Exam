@@ -22,18 +22,18 @@ import com.google.developer.taskmaker.data.DatabaseContract;
 import com.google.developer.taskmaker.data.TaskAdapter;
 import com.google.developer.taskmaker.data.TaskUpdateService;
 
-// Make the Activity implement the LoaderCallbacks interface
+// TODO: Make the Activity implement the LoaderCallbacks interface
 public class MainActivity extends AppCompatActivity implements
         TaskAdapter.OnItemClickListener,
         View.OnClickListener,
         LoaderManager.LoaderCallbacks<Cursor> {
 
-    // Create TAG for logging
+    // TODO: Create TAG for logging
     private static final String TAG = "MainActivity";
 
     private TaskAdapter mAdapter;
 
-    // Create ID for the specific Loader in this Activity
+    // TODO:Create ID for the specific Loader in this Activity
     private static final int ID_TASK_LOADER = 0;
 
     @Override
@@ -51,17 +51,17 @@ public class MainActivity extends AppCompatActivity implements
         recyclerView.setAdapter(mAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        // Initialize the Loader
-        getSupportLoaderManager().initLoader(ID_TASK_LOADER, null, this);
+        //TODO: Initialize the Loader
+
     }
 
-    // Override the onResume() lifecycle method
+    //TODO: Override the onResume() lifecycle method
     @Override
     protected void onResume() {
         super.onResume();
 
-        // Restart the Loader
-        getSupportLoaderManager().restartLoader(ID_TASK_LOADER, null, this);
+        //TODO: Restart the Loader
+
     }
 
     @Override
@@ -73,20 +73,15 @@ public class MainActivity extends AppCompatActivity implements
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            Intent intent = new Intent(this, SettingsActivity.class);
-            startActivity(intent);
-            return true;
-        }
+        //TODO: noinspection SimplifiableIfStatement
+
         return super.onOptionsItemSelected(item);
     }
 
-    /* Click events in Floating Action Button */
+    /*  Click events in Floating Action Button */
     @Override
     public void onClick(View v) {
-        Intent intent = new Intent(this, AddTaskActivity.class);
-        startActivity(intent);
+
     }
 
     /* Click events in RecyclerView items */
@@ -94,13 +89,13 @@ public class MainActivity extends AppCompatActivity implements
     public void onItemClick(View v, int position) {
         //TODO: Handle list item click event
         // Create an Intent to navigate to the TaskDetailActivity
-        Intent detailIntent = new Intent(getBaseContext(), TaskDetailActivity.class);
 
-        // Set the data (URI and item Id) in the Intent
-        detailIntent.setData(ContentUris.withAppendedId(DatabaseContract.CONTENT_URI, mAdapter.getItemId(position)));
 
-        // Start the Activity, passing the Intent
-        startActivity(detailIntent);
+        //TODO: Set the data (URI and item Id) in the Intent
+
+
+        //TODO: Start the Activity, passing the Intent
+
     }
 
     /* Click events on RecyclerView item checkboxes */
@@ -110,64 +105,53 @@ public class MainActivity extends AppCompatActivity implements
         // Create a ContentValues object
         ContentValues cv = new ContentValues();
 
-        // If the Task is checked...
-        if (active) {
+        //TODO: If the Task is checked...
 
-            // Store the Task as inactive in the IS_COMPLETE column
-            cv.put(DatabaseContract.TaskColumns.IS_COMPLETE, "1");
 
-            // If the Task is not checked...
-        } else {
+            //TODO: Store the Task as inactive in the IS_COMPLETE column
 
-            // Store the Task as active in the IS_COMPLETE column
-            cv.put(DatabaseContract.TaskColumns.IS_COMPLETE, "0");
-        }
 
-        // Update the Task, passing the context, the ContentURI, the Task's Id,
+            //TODO: If the Task is not checked...
+
+
+            //TODO: Store the Task as active in the IS_COMPLETE column
+
+
+        //TODO: Update the Task, passing the context, the ContentURI, the Task's Id,
         // and the ContentValues object
-        TaskUpdateService.updateTask(this,
-                ContentUris.withAppendedId(DatabaseContract.CONTENT_URI, mAdapter.getItemId(position)),
-                cv);
+
     }
 
     @NonNull
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
 
-        // Return a new CursorLoader object, passing the ContentURI,
+        //TODO: Return a new CursorLoader object, passing the ContentURI,
         // and the sort order
-        return new CursorLoader(this,
-                DatabaseContract.CONTENT_URI,
-                null,
-                null,
-                null,
-                getOrder());
+
     }
 
     private final String getOrder() {
 
-        // Retrieve the order from SharedPreferences
-        String order = PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.pref_sortBy_key), getString(R.string.pref_sortBy_default));
-
-        // Create orderToSend String
-        String orderToSend = null;
-
-        // If the order is "default"...
-        if (order.equals(getString(R.string.pref_sortBy_default))) {
-
-            // Set the sort order as "DEFAULT_SORT"
-            orderToSend = DatabaseContract.DEFAULT_SORT;
+        //TODO: Retrieve the order from SharedPreferences
 
 
-        } else { // If the order is "default"...
+        //TODO: Create orderToSend String
 
-            // Set the sort order as "DATE_SORT"
-            orderToSend = DatabaseContract.DATE_SORT;
 
-        }
+        //TODO: If the order is "default"...
 
-        // Return the sort order to the query
-        return orderToSend;
+
+            //TODO: Set the sort order as "DEFAULT_SORT"
+
+
+
+        //TODO: If the order is "default"...
+
+            //TODO: Set the sort order as "DATE_SORT"
+
+        //TODO: Return the sort order to the query
+
     }
 
     @Override

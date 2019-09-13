@@ -18,12 +18,8 @@ public class AlarmScheduler {
      * @param reminderTask Uri referencing the task in the content provider
      */
     public static void scheduleAlarm(Context context, long alarmTime, Uri reminderTask) {
-        //Schedule the alarm. Will update an existing item for the same task.
+        //TODO Schedule the alarm. Will update an existing item for the same task.
         AlarmManager manager = AlarmManagerProvider.getAlarmManager(context);
 
-        PendingIntent operation =
-                ReminderAlarmService.getReminderPendingIntent(context, reminderTask);
-
-        manager.setExact(AlarmManager.RTC, alarmTime, operation);
     }
 }

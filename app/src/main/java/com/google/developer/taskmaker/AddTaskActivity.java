@@ -54,11 +54,8 @@ public class AddTaskActivity extends AppCompatActivity implements
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        //noinspection SimplifiableIfStatement
-        if (item.getItemId() == R.id.action_save) {
-            saveItem();
-            return true;
-        }
+        //TODO noinspection SimplifiableIfStatement
+
 
         return super.onOptionsItemSelected(item);
     }
@@ -86,12 +83,7 @@ public class AddTaskActivity extends AppCompatActivity implements
     public void onDateSet(DatePicker view, int year, int month, int day) {
         //Set to noon on the selected day
         Calendar c = Calendar.getInstance();
-        c.set(Calendar.YEAR, year);
-        c.set(Calendar.MONTH, month);
-        c.set(Calendar.DAY_OF_MONTH, day);
-        c.set(Calendar.HOUR_OF_DAY, 12);
-        c.set(Calendar.MINUTE, 0);
-        c.set(Calendar.SECOND, 0);
+
 
         setDateSelection(c.getTimeInMillis());
     }
@@ -106,12 +98,9 @@ public class AddTaskActivity extends AppCompatActivity implements
     }
 
     private void saveItem() {
-        //Insert a new item
+        //TODO Insert a new item
         ContentValues values = new ContentValues(4);
-        values.put(TaskColumns.DESCRIPTION, mDescriptionView.getText().toString());
-        values.put(TaskColumns.IS_PRIORITY, mPrioritySelect.isChecked() ? 1 : 0);
-        values.put(TaskColumns.IS_COMPLETE, 0);
-        values.put(TaskColumns.DUE_DATE, getDateSelection());
+
 
         TaskUpdateService.insertNewTask(this, values);
         finish();

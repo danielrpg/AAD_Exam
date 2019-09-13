@@ -91,104 +91,96 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskHolder> {
 
         //TODO: Bind the task data to the views
 
-        // Get the column index of the id
-        int idIndex = mCursor.getColumnIndex(DatabaseContract.TaskColumns._ID);
+        //TODO Get the column index of the id
 
-        // Get the column index of the checkbox
-        int checkboxIndex = mCursor.getColumnIndex(DatabaseContract.TaskColumns.IS_COMPLETE);
 
-        // Get the column index of the priority
-        int priorityIndex = mCursor.getColumnIndex(DatabaseContract.TaskColumns.IS_PRIORITY);
+        //TODO Get the column index of the checkbox
 
-        // Get the column index of the dueDate
-        int dueDateIndex = mCursor.getColumnIndex(DatabaseContract.TaskColumns.DUE_DATE);
 
-        // Get the column index of the taskDescription
-        int taskDescriptionIndex = mCursor.getColumnIndex(DatabaseContract.TaskColumns.DESCRIPTION);
+        //TODO Get the column index of the priority
 
-        // Move cursor to position
-        mCursor.moveToPosition(position);
 
-        // Get the value of id from the cursor
-        final int id = mCursor.getInt(idIndex);
+        //TODO Get the column index of the dueDate
 
-        // Get the value of isComplete from the cursor
-        int isComplete = mCursor.getInt(checkboxIndex);
 
-        // Get the value of priority from the cursor
-        int priority = mCursor.getInt(priorityIndex);
+        //TODO Get the column index of the taskDescription
 
-        // Get the value of dueDate from the cursor
-        long dueDate = Long.parseLong(mCursor.getString(dueDateIndex));
 
-        // Get the value of taskDescription from the cursor
-        String taskDescription = mCursor.getString(taskDescriptionIndex);
+        //TODO Move cursor to position
 
-        // Set a tag on the itemView with the id of the Task
-        holder.itemView.setTag(id);
 
-        // If the Task is done...
+        //TODO Get the value of id from the cursor
+
+
+        //TODO Get the value of isComplete from the cursor
+
+
+        //TODO Get the value of priority from the cursor
+
+
+        //TODO Get the value of dueDate from the cursor
+
+
+        //TODO Get the value of taskDescription from the cursor
+
+
+        //TODO Set a tag on the itemView with the id of the Task
+
+
+        //TODO If the Task is done...
         if (isComplete == 1) {
 
-            // Check the checkbox
-            holder.checkBox.setChecked(true);
+            //TODO Check the checkbox
 
-            // Set the state of the nameView to "DONE"
-            holder.nameView.setState(TaskTitleView.DONE);
+            //TODO Set the state of the nameView to "DONE"
 
-            // Strike through the text of th nameView
-            holder.nameView.setPaintFlags(Paint.STRIKE_THRU_TEXT_FLAG);
 
-            // If the Task is overdue...
+            //TODO Strike through the text of th nameView
+
+            //TODO If the Task is overdue...
         } else if (dueDate < System.currentTimeMillis()) {
 
-            // Set the state of the nameView to "OVERDUE"
-            holder.nameView.setState(TaskTitleView.OVERDUE);
+            //TODO Set the state of the nameView to "OVERDUE"
 
-            // un-Check the checkbox
-            holder.checkBox.setChecked(false);
+            //TODO un-Check the checkbox
 
-        } else { // If the Task is normal...
 
-            // Set the state of the nameView to "NORMAL"
-            holder.nameView.setState(TaskTitleView.NORMAL);
+        } else { //TODO If the Task is normal...
 
-            // un-Check the checkbox
-            holder.checkBox.setChecked(false);
+            //TODO Set the state of the nameView to "NORMAL"
+
+
+            //TODO un-Check the checkbox
+;
         }
 
-        // If the Task is a priority...
+        //TODO If the Task is a priority...
         if (priority == 1) {
 
-            // Set the priorityView ImageView with the priority icon
-            holder.priorityView.setImageResource(R.drawable.ic_priority);
+            //TODO Set the priorityView ImageView with the priority icon
 
-        } else { // If the Task is not a priority...
 
-            // Set the priorityView ImageView with the non-priority icon
-            holder.priorityView.setImageResource(R.drawable.ic_not_priority);
+        } else { //TODO If the Task is not a priority...
+
+            //TODO Set the priorityView ImageView with the non-priority icon
+
         }
 
-        // If there is no due date...
+        //TODO If there is no due date...
         if (dueDate == Long.MAX_VALUE) {
 
-            // Display the "Not Set" text in the dateView TextView
-            holder.dateView.setText(R.string.date_empty);
+            //TODO Display the "Not Set" text in the dateView TextView
 
-        } else { // If there is a due date...
+        } else { //TODO If there is a due date...
 
-            // Format the dueDate
-            CharSequence formatted = DateUtils.getRelativeTimeSpanString(mContext, dueDate);
+            //TODO Format the dueDate
 
-            // Make the dateView TextView visible
-            holder.dateView.setVisibility(View.VISIBLE);
+            //TODO Make the dateView TextView visible
 
-            // Set the date of the Task on the dateView TextView
-            holder.dateView.setText(formatted);
+            //TODO Set the date of the Task on the dateView TextView
         }
 
-        // Set the description of the Task on the nameView TextView
-        holder.nameView.setText(taskDescription);
+        //TODO Set the description of the Task on the nameView TextView
 
     }
 
@@ -219,11 +211,9 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskHolder> {
 
     public void swapCursor(Cursor cursor) {
 
-        // Get the new cursor object passed into the method
+        //TODO Get the new cursor object passed into the method
         // and persist it as a field of the class
-        mCursor = cursor;
 
-        // Notify the adapter that the data has changed
-        notifyDataSetChanged();
+        //TODO Notify the adapter that the data has changed
     }
 }

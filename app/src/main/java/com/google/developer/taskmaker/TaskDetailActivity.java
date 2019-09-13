@@ -44,97 +44,87 @@ public class TaskDetailActivity extends AppCompatActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_task);
-        // Task must be passed to this activity as a valid provider Uri
+        //TODO: Task must be passed to this activity as a valid provider Uri
         // Get the Uri from the Intent
         final Uri taskUri = getIntent().getData();
 
-        // Persist the Uri as a field of the class
-        mUri = taskUri;
+        //TODO: Persist the Uri as a field of the class
 
         //TODO: Display attributes of the provided task in the UI
 
-        // Initialize the view components of the Activity
-        initView();
+        //TODO: Initialize the view components of the Activity
 
-        // Get the data from the database and display it in the UI
-        getData();
+        //TODO: Get the data from the database and display it in the UI
 
     }
 
     private void initView() {
 
-        // Initialize the textDescription TextView
-        textDescription = (TaskTitleView) findViewById(R.id.text_description);
+        //TODO: Initialize the textDescription TextView
 
-        // Initialize the textDate TextView
-        textDate = (TextView) findViewById(R.id.text_date);
 
-        // Initialize the imagePriority ImageView
-        imagePriority = (ImageView) findViewById(R.id.priority);
+        //TODO: Initialize the textDate TextView
+
+
+        //TODO: Initialize the imagePriority ImageView
+
     }
 
     private void getData() {
 
-        // Query the database, passing the Uri of a specific Task
-        mDetailCursor = getContentResolver().query(
-                mUri,
-                null,
-                null,
-                null,
-                null);
+        //TODO: Query the database, passing the Uri of a specific Task
 
-        // Assert that the cursor is not null
-        assert mDetailCursor != null;
 
-        // Get the column index of the checkbox
-        int checkboxIndex = mDetailCursor.getColumnIndex(DatabaseContract.TaskColumns.IS_COMPLETE);
+        //TODO: Assert that the cursor is not null
 
-        // Get the column index of the priority
-        int priorityIndex = mDetailCursor.getColumnIndex(DatabaseContract.TaskColumns.IS_PRIORITY);
 
-        // Get the column index of the dueDate
-        int dueDateIndex = mDetailCursor.getColumnIndex(DatabaseContract.TaskColumns.DUE_DATE);
+        //TODO Get the column index of the checkbox
 
-        // Get the column index of the taskDescription
-        int taskDescriptionIndex = mDetailCursor.getColumnIndex(DatabaseContract.TaskColumns.DESCRIPTION);
 
-        // Move to the beginning of the cursor
-        mDetailCursor.moveToFirst();
+        //TODO Get the column index of the priority
 
-        // Get the value of isComplete from the cursor
-        int isComplete = mDetailCursor.getInt(checkboxIndex);
 
-        // Get the value of priority from the cursor
-        int priority = mDetailCursor.getInt(priorityIndex);
+        //TODO Get the column index of the dueDate
 
-        // Get the value of dueDate from the cursor
-        long dueDate = Long.parseLong(mDetailCursor.getString(dueDateIndex));
+        //TODO Get the column index of the taskDescription
 
-        // Get the value of taskDescription from the cursor
-        String taskDescription = mDetailCursor.getString(taskDescriptionIndex);
 
-        // If the Task is a priority...
-        if (priority == 1) {
+        //TODO Move to the beginning of the cursor
 
-            // Set the imagePriority ImageView with the priority icon
-            imagePriority.setImageResource(R.drawable.ic_priority);
 
-        } else { // If the Task is a non-priority...
+        //TODO Get the value of isComplete from the cursor
 
-            // Set the imagePriority ImageView with the non-priority icon
-            imagePriority.setImageResource(R.drawable.ic_not_priority);
-        }
 
-        // If there is no due date...
-        if (dueDate == Long.MAX_VALUE) {
+        //TODO Get the value of priority from the cursor
 
-            // Display the "Not Set" text in the textDate TextView
-            textDate.setText(R.string.date_empty);
 
-        } else { // If there is a due date...
+        //TODO Get the value of dueDate from the cursor
 
-            // Format the dueDate
-            CharSequence formatted = DateUtils.getRelativeTimeSpanString(this, dueDate);
+
+        //TODO Get the value of taskDescription from the cursor
+
+
+        //TODO If the Task is a priority...
+
+
+            //TODO Set the imagePriority ImageView with the priority icon
+
+
+            //TODO If the Task is a non-priority...
+
+            //TODO Set the imagePriority ImageView with the non-priority icon
+
+
+        //TODO If there is no due date...
+
+
+            //TODO Display the "Not Set" text in the textDate TextView
+
+
+         //TODO If there is a due date...
+
+            //TODO Format the dueDate
+
 
             // Make the textDate TextView visible
             textDate.setVisibility(View.VISIBLE);
@@ -158,10 +148,10 @@ public class TaskDetailActivity extends AppCompatActivity implements
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        // Get the Id of the selected menu item
+        //TODO Get the Id of the selected menu item
         switch (item.getItemId()) {
 
-            // If the menu item selected was the delete item...
+            //TODO If the menu item selected was the delete item...
             case R.id.action_delete:
 
                 // Delete the Task, passing the context and the URI

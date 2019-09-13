@@ -23,19 +23,14 @@ public class DatabaseContract {
     public static final String CONTENT_AUTHORITY = "com.google.developer.taskmaker";
 
     /* Sort order constants */
-    //Priority first, Completed last, the rest by date
-    public static final String DEFAULT_SORT = String.format("%s ASC, %s DESC, %s ASC",
-            TaskColumns.IS_COMPLETE, TaskColumns.IS_PRIORITY, TaskColumns.DUE_DATE);
+    //TODO Priority first, Completed last, the rest by date
 
-    //Completed last, then by date, followed by priority
-    public static final String DATE_SORT = String.format("%s ASC, %s ASC, %s DESC",
-            TaskColumns.IS_COMPLETE, TaskColumns.DUE_DATE, TaskColumns.IS_PRIORITY);
 
-    //Base content Uri for accessing the provider
-    public static final Uri CONTENT_URI = new Uri.Builder().scheme("content")
-            .authority(CONTENT_AUTHORITY)
-            .appendPath(TABLE_TASKS)
-            .build();
+    //TODO Completed last, then by date, followed by priority
+
+
+    //TODO Base content Uri for accessing the provider
+
 
     /* Helpers to retrieve column values */
     public static String getColumnString(Cursor cursor, String columnName) {
